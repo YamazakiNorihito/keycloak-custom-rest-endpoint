@@ -26,3 +26,13 @@ Authorization: Bearer {{access_token}}
 ### get credential
 GET {{baseuri}}admin/realms/{{target_reamlm}}/credential-admin-api/users/799f1b99-fbde-4849-8b35-f6a34e0547a6/credentials
 Authorization: Bearer {{access_token}}
+
+### create credential
+POST {{baseuri}}realms/{{target_reamlm}}admin//credential-api/users/799f1b99-fbde-4849-8b35-f6a34e0547a6/credentials
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "question": "What is your favorite color?",
+  "answer": "Blue"
+}

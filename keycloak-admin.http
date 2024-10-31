@@ -17,31 +17,41 @@ Content-Type: application/x-www-form-urlencoded
 username={{admin_username}}&password={{admin_password}}&grant_type=password&client_id={{admin_client_id}}
 
 ### set admin token
-@admin_access_token = {{admintoken.response.body.$.access_token}}
-@admin_refresh_token = {{admintoken.response.body.$.refresh_token}}
+@access_token = {{admintoken.response.body.$.access_token}}
+@refresh_token = {{admintoken.response.body.$.refresh_token}}
 
 ### get realm
 
 GET {{baseuri}}admin/realms
-Authorization: Bearer {{admin_access_token}}
+Authorization: Bearer {{access_token}}
 Content-Type: application/json
 
 ### get users
 @target_reamlm = myrealm
 
 GET {{baseuri}}admin/realms/{{target_reamlm}}/users
-Authorization: Bearer {{admin_access_token}}
+Authorization: Bearer {{access_token}}
 
 
 ### get user
 GET {{baseuri}}admin/realms/{{target_reamlm}}/users/799f1b99-fbde-4849-8b35-f6a34e0547a6
-Authorization: Bearer {{admin_access_token}}
+Authorization: Bearer {{access_token}}
 
 ### get credential
 GET {{baseuri}}realms/{{target_reamlm}}/credential-api/users/799f1b99-fbde-4849-8b35-f6a34e0547a6/credentials
-Authorization: Bearer {{admin_access_token}}
+Authorization: Bearer {{access_token}}
 
 
 ### get credential
 GET {{baseuri}}admin/realms/{{target_reamlm}}/credential-admin-api/users/799f1b99-fbde-4849-8b35-f6a34e0547a6/credentials
-Authorization: Bearer {{admin_access_token}}
+Authorization: Bearer {{access_token}}
+
+### create credential
+POST {{baseuri}}admin/realms/{{target_reamlm}}/credential-admin-api/users/799f1b99-fbde-4849-8b35-f6a34e0547a6/credentials
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "question": "What is your favorite color?",
+  "answer": "Blue"
+}
