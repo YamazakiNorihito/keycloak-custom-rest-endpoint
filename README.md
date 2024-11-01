@@ -131,3 +131,13 @@ The repository’s structure is organized as follows:
 ## Disclaimer
 
 This project is intended for educational and development purposes and may not be secure for production use. The code in this repository may not meet security and authorization requirements, so please ensure thorough security reviews and testing before deploying it in a production environment.
+
+## Build with Docker and Maven
+
+You can build the project using a Docker container for Maven. This method ensures you are using the correct Maven and Java versions without needing them installed locally.
+
+If you are working within a devcontainer, you can also build directly inside the devcontainer environment without additional setup.
+
+```bash
+docker run -it --rm --name my-maven-project -v "$(pwd)/custom-rest-api":/usr/src/mymaven -w /usr/src/mymaven maven:3.8.5-openjdk-17-slim mvn clean install
+```
